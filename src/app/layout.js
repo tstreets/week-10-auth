@@ -1,5 +1,6 @@
 import Link from "next/link";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,17 +11,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <nav>
-          <ul>
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/peep">Peep</Link>
-            </li>
-          </ul>
-        </nav>
-        {children}
+        <ClerkProvider>
+          <nav>
+            <ul>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                <Link href="/peep">Peep</Link>
+              </li>
+            </ul>
+          </nav>
+          {children}
+        </ClerkProvider>
       </body>
     </html>
   );
